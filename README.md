@@ -44,8 +44,4 @@ npm run dev
 ```
 The frontend application will be available at `http://localhost:5173`.
 
-## 🌐 Cloud Deployment
 
-The application is configured to be easily deployable on cloud providers:
-- **Backend:** Ready for **Render**. Just set the Root Directory to `backend`, use `pip install -r requirements.txt` as the build command, and `uvicorn main:app --host 0.0.0.0 --port $PORT` as the start command.
-- **Frontend:** Ready for **Vercel** or **Netlify**. Set the Environment Variable `VITE_API_URL` to your deployed backend URL.
