@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react';
 
 export default function ImageUpload({ onImageReady, onClear }) {
   const [preview, setPreview] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setSelectedFile(file);
       // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -17,14 +19,14 @@ export default function ImageUpload({ onImageReady, onClear }) {
   };
 
   const submitImage = () => {
-    const file = fileInputRef.current.files[0];
-    if (file) {
-      onImageReady(file);
+    if (selectedFile) {
+      onImageReady(selectedFile);
     }
   };
 
   const clearImage = () => {
     setPreview(null);
+    setSelectedFile(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
