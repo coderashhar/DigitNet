@@ -42,10 +42,6 @@ dist-ssr/
 # Jupyter
 .ipynb_checkpoints
 
-# ML Models
-*.h5
-*.keras
-
 # IDEs
 .idea/
 .vscode/
