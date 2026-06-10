@@ -26,8 +26,9 @@ function App() {
     formData.append('file', fileOrBlob, 'digit.png');
 
     try {
-      // Assuming FastAPI runs on default port 8000 locally
-      const response = await axios.post('http://localhost:8000/predict', formData, {
+      // Use environment variable for the API URL
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await axios.post(`${apiUrl}/predict`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
