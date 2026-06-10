@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-export default function ImageUpload({ onImageReady }) {
+export default function ImageUpload({ onImageReady, onClear }) {
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -28,6 +28,7 @@ export default function ImageUpload({ onImageReady }) {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+    if (onClear) onClear();
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-export default function DrawingCanvas({ onImageReady }) {
+export default function DrawingCanvas({ onImageReady, onClear }) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
@@ -67,6 +67,7 @@ export default function DrawingCanvas({ onImageReady }) {
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (onClear) onClear();
   };
 
   const submitDrawing = () => {

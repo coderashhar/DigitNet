@@ -10,6 +10,11 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const handleClear = () => {
+    setResult(null);
+    setError(null);
+  };
+
   const handlePredict = async (fileOrBlob) => {
     if (!fileOrBlob) return;
     
@@ -50,22 +55,22 @@ function App() {
         <div className="tabs">
           <div 
             className={`tab ${activeTab === 'draw' ? 'active' : ''}`}
-            onClick={() => setActiveTab('draw')}
+            onClick={() => { setActiveTab('draw'); handleClear(); }}
           >
             Draw Digit
           </div>
           <div 
             className={`tab ${activeTab === 'upload' ? 'active' : ''}`}
-            onClick={() => setActiveTab('upload')}
+            onClick={() => { setActiveTab('upload'); handleClear(); }}
           >
             Upload Image
           </div>
         </div>
 
         {activeTab === 'draw' ? (
-          <DrawingCanvas onImageReady={handlePredict} />
+          <DrawingCanvas onImageReady={handlePredict} onClear={handleClear} />
         ) : (
-          <ImageUpload onImageReady={handlePredict} />
+          <ImageUpload onImageReady={handlePredict} onClear={handleClear} />
         )}
 
         {loading && (
