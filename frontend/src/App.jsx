@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
-      <h1 className="title">NeuralVision</h1>
+      <h1 className="title">DigitNet</h1>
       <p className="subtitle">AI-Powered Handwritten Digit Recognition</p>
 
       <div className="glass-panel">
